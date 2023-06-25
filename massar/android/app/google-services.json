@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "1081410963589",
+    "project_id": "massar-chating-4a485",
+    "storage_bucket": "massar-chating-4a485.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081410963589:android:8c7be5b3191fc03f6241ec",
+        "android_client_info": {
+          "package_name": "com.example.massar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081410963589-li5at5nfo18gr2ae1vi6pm1b7130c2dv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.massar",
+            "certificate_hash": "0b515321c32981c8e1147f742ac858385b186526"
+          }
+        },
+        {
+          "client_id": "1081410963589-nt58viublgkpin123fkk0vclfldu7nrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3pJKuaTWIFNYTyCwvBofwbj34u4nfIl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081410963589-nt58viublgkpin123fkk0vclfldu7nrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081410963589:android:33876613c156b23f6241ec",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081410963589-nt58viublgkpin123fkk0vclfldu7nrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3pJKuaTWIFNYTyCwvBofwbj34u4nfIl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081410963589-nt58viublgkpin123fkk0vclfldu7nrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
