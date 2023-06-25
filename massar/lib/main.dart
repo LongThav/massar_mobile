@@ -81,4 +81,3 @@ class MyApp extends StatelessWidget {
 //user2
 //email: pav4463@gmail.com
 //password: sipav123
-//https://blog.logrocket.com/add-flutter-push-notifications-firebase-cloud-messaging/
