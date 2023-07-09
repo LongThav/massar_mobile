@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../dashboards/mains_views.dart/index_views.dart';
 import '/constants/snack_bar.dart';
 import '../../controllers/auth_ctrls/auth_ctrl.dart';
+import 'forgot_password_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -103,10 +104,17 @@ class _LoginViewState extends State<LoginView> {
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 15)),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          alignment: Alignment.centerRight,
-          child: const Text("Forgot Password?"),
+        InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return const ForgotPasswordView();
+            }));
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            alignment: Alignment.centerRight,
+            child: const Text("Forgot Password?"),
+          ),
         ),
         SizedBox(
           height: height * 0.02,
@@ -156,13 +164,6 @@ class _LoginViewState extends State<LoginView> {
                   bottomRight: Radius.circular(12)),
             ),
             child: Center(
-              // child: Text(
-              //   "Login",
-              //   style: TextStyle(
-              //       fontSize: 20,
-              //       fontWeight: FontWeight.bold,
-              //       color: Colors.white),
-              // ),
               child: isLoading
                   ? const CircularProgressIndicator(
                       color: Colors.white,

@@ -100,9 +100,19 @@ class AuthController extends ChangeNotifier {
   }
 
 
-  Future<bool> forgotPassword()async{
+  Future<bool> forgotPasswordController(String email)async{
     try{
-      return true;
+      final Map<String, dynamic> map = {
+        'email': email,
+      };
+      String url = mainUrl + forgotPassword;
+      http.Response response = await http.post(Uri.parse(url), body: map);
+      debugPrint("Response Body: ${response.body}");
+      if(response.statusCode == 200){
+        return true;
+      }else{
+        return false;;
+      }
     }catch(e){
       debugPrint("Error: $e");
       return false;
@@ -111,9 +121,64 @@ class AuthController extends ChangeNotifier {
     }
   }
 
-  Future<bool> setNewPassword()async{
+  Future<bool> verifyPinController(String email, String pin)async{
     try{
-      return true;
+      String url = mainUrl + verifyPin;
+      final Map<String, dynamic> map = {
+        'email': email,
+        'token': pin
+      };
+      http.Response response = await http.post(Uri.parse(url), body: map);
+      debugPrint("Response Body: ${response.body}");
+      if(response.statusCode ==  200){
+        return true;
+      }else{
+        return false;
+      }
+    }catch(err){
+      debugPrint("Error: $err");
+      return false;
+    }finally{
+      notifyListeners();
+    }
+  }
+
+  Future<bool> resentVerifyPinController(String email)async{
+    try{
+      final Map<String, dynamic> map = {
+        'email': email
+      };
+      String url = mainUrl + resentPin;
+      http.Response response = await http.post(Uri.parse(url), body: map);
+      debugPrint("Response Body: ${response.body}");
+      if(response.statusCode == 200){
+        return true;
+      }else{
+        return false;
+      }
+    }catch(err){
+      debugPrint("Error: $err");
+      return false;
+    }finally{
+      notifyListeners();
+    }
+  }
+
+  Future<bool> setNewPassword(String email ,String password, String passwordConfirm)async{
+    try{
+      final Map<String, dynamic> map  = {
+        'email': email,
+        'password': password,
+        'password_confirmation': passwordConfirm
+      };
+      String url = mainUrl + changePassword;
+      http.Response response = await http.post(Uri.parse(url), body: map);
+      debugPrint("Response Body: ${response.body}");
+      if(response.statusCode == 200){
+        return true;
+      }else{
+        return false;
+      }
     }catch(e){
       debugPrint("Error: $e");
       return false;
