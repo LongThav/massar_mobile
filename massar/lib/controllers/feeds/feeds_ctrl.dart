@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -17,7 +15,7 @@ import 'package:project/models/feed_model/post_model.dart';
 import '../../db_helper_local/auth_db_helper/auth_db_local.dart';
 
 class FeedController extends ChangeNotifier {
-  PostModel _postModel = PostModel(data: Post(user: User()));
+  PostModel _postModel = PostModel();
   PostModel get postModel => _postModel;
 
   CommentModel _commentModel = CommentModel(user: UserComment());
@@ -196,7 +194,7 @@ class FeedController extends ChangeNotifier {
 
   Future<void> readPost() async {
     try {
-      String url = '$mainUrl$getPost/1';
+      String url = "$mainUrl/get-post";
       debugPrint("Url: $url");
       var token = await _authHelper.readToken();
       final header = {

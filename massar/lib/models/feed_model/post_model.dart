@@ -1,24 +1,24 @@
 class PostModel {
     String message;
     int statusCode;
-    Post data;
+    List<Post> data;
 
     PostModel({
-         this.message = "no-message", 
+         this.message = "no-message",
          this.statusCode = 0,
-         required this.data,
+         this.data = const [],
     });
 
     factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
         message: json["message"],
         statusCode: json["statusCode"],
-        data: Post.fromJson(json["data"]),
+        data: List<Post>.from(json["data"].map((x) => Post.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "message": message,
         "statusCode": statusCode,
-        "data": data.toJson(),
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
     };
 }
 
@@ -63,9 +63,9 @@ class Comment {
     String body;
     int userId;
     int postId;
-    String? likeCount;
-    DateTime createdAt;
-    DateTime updatedAt;
+    int? likeCount;
+    DateTime? createdAt;
+    DateTime? updatedAt;
 
     Comment({
         this.id = 0,
@@ -73,8 +73,8 @@ class Comment {
         this.userId = 0,
         this.postId = 0,
         this.likeCount,
-        required this.createdAt,
-        required this.updatedAt,
+        this.createdAt,
+        this.updatedAt,
     });
 
     factory Comment.fromJson(Map<String, dynamic> json) => Comment(
@@ -93,8 +93,8 @@ class Comment {
         "user_Id": userId,
         "post_id": postId,
         "like_count": likeCount,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
     };
 }
 
@@ -115,12 +115,12 @@ class User {
         this.id = 0,
         this.fullname = "no-fullname",
         this.email = "no-email",
-        this.phone =  "no-phone",
-        this.userId = "no-userId",
-        this.image = "no-image",
-        this.address = "no-address",
-        this.verifyEmail = "no-verifyEmail",
-        this.emailVerifiedAt = "no-emailVerifiedAt",
+        this.phone = "no-phone",
+        this.userId,
+        this.image,
+        this.address,
+        this.verifyEmail,
+        this.emailVerifiedAt,
         this.createdAt,
         this.updatedAt,
     });
@@ -131,7 +131,7 @@ class User {
         email: json["email"],
         phone: json["phone"],
         userId: json["user_id"],
-        image: json["image"] ?? "noImage",
+        image: json["image"],
         address: json["address"],
         verifyEmail: json["verify_email"],
         emailVerifiedAt: json["email_verified_at"],

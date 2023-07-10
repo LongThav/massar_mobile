@@ -120,10 +120,9 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                             _confirmPasswordCtrl.text)
                         .then((value) {
                       if (value) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context){
                           return const LoginView();
-                        }));
+                        }), (route) => false);
                       }
                       snackBar(context, "Reset Password falis");
                     });
