@@ -161,17 +161,22 @@ class _FeedViewState extends State<FeedView> {
                                     IconButton(
                                       onPressed: () {
                                         setState(() {
-                                          bool selected =
-                                              _isSelect = !_isSelect;
+                                          // bool selected =
+                                          //     _isSelect = !_isSelect;
+                                          bool selected = post.data[index].selectlike =! post.data[index].selectlike;
                                           debugPrint("Select: $selected");
                                           if (selected == true) {
+                                            context
+                                                .read<FeedController>()
+                                                .likeCtrl(post.data[index].id);
+                                          }else{
                                             context
                                                 .read<FeedController>()
                                                 .likeCtrl(post.data[index].id);
                                           }
                                         });
                                       },
-                                      icon: _isSelect
+                                      icon: post.data[index].selectlike
                                           ? Icon(
                                               Icons.favorite,
                                               color: Colors.red[700],

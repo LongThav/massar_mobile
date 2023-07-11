@@ -27,10 +27,12 @@ class Post {
     String image;
     String description;
     User user;
+    bool selectlike;
     List<Comment> comments;
     int like;
 
     Post({
+         this.selectlike = false,
          this.id = 0,
          this.image = "no-image",
          this.description = "no-description",
