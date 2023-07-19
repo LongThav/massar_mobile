@@ -6,13 +6,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project/views/dashboards/home_views/chats/chat_view.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../constants/logger.dart';
+import '../../../../utils/constants/logger.dart';
 import '/controllers/auth_ctrls/auth_firebase_ctrl.dart';
 import '../../../../controllers/chat_ctrl/home_chat_ctrl.dart';
 import '/models/chat_model/chat_user_model.dart';
 import '/views/auths/login_view.dart';
 
-import '../../../../constants/firstore_constan.dart';
+import '../../../../utils/constants/firstore_constan.dart';
 
 class ListChatingView extends StatefulWidget {
   const ListChatingView({super.key});

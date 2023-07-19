@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/loading_status.dart';
-import 'package:project/constants/snack_bar.dart';
+import 'package:project/utils/constants/loading_status.dart';
+import 'package:project/utils/constants/snack_bar.dart';
 import 'package:project/controllers/feeds/feeds_ctrl.dart';
 import 'package:project/models/feed_model/comment_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants/color.dart';
+import '../../../utils/constants/color.dart';
 
 class CommentView extends StatefulWidget {
   final int id;

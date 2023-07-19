@@ -8,9 +8,9 @@ import 'dart:convert';
 import 'package:file_picker/file_picker.dart';
 import 'package:http/http.dart' as http;
 
-import '/constants/logger.dart';
-import '/constants/url_base.dart';
-import '/constants/loading_status.dart';
+import '../../utils/constants/logger.dart';
+import '../../utils/constants/url_base.dart';
+import '../../utils/constants/loading_status.dart';
 import '/db_helper_local/auth_db_helper/auth_db_local.dart';
 import '/models/auth_model/login_model.dart';
 

@@ -5,9 +5,9 @@ import 'package:project/models/deal_model/deal_model.dart';
 import 'package:provider/provider.dart';
 
 import '/controllers/home_ctrl/beauty_ctrl.dart';
-import '../../../constants/color.dart';
-import '../../../constants/loading_status.dart';
-import '../../../constants/url_base.dart';
+import '../../../utils/constants/color.dart';
+import '../../../utils/constants/loading_status.dart';
+import '../../../utils/constants/url_base.dart';
 import '../../../widgets/common_gride_view.dart';
 import 'view_detail_item_view.dart';
 

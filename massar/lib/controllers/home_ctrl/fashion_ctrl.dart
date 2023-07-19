@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-import '/constants/loading_status.dart';
-import '/constants/logger.dart';
+import '../../utils/constants/loading_status.dart';
+import '../../utils/constants/logger.dart';
 import '/models/fashion_model/fashion_model.dart';
-import '../../constants/url_base.dart';
+import '../../utils/constants/url_base.dart';
 import '../../db_helper_local/auth_db_helper/auth_db_local.dart';
 
 class FashionController extends ChangeNotifier {

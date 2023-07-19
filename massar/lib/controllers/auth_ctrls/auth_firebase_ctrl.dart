@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:project/constants/firstore_constan.dart';
-import 'package:project/constants/snack_bar.dart';
+import 'package:project/utils/constants/firstore_constan.dart';
+import 'package:project/utils/constants/snack_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/chat_model/chat_user_model.dart';

@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:project/constants/logger.dart';
+import 'package:project/utils/constants/logger.dart';
 import 'dart:convert';
 
-import '../../constants/snack_bar.dart';
+import '../../utils/constants/snack_bar.dart';
 import '../../models/auth_model/login_model.dart';
-import '../../constants/url_base.dart';
+import '../../utils/constants/url_base.dart';
 import '../../db_helper_local/auth_db_helper/auth_db_local.dart';
 import '../../views/dashboards/mains_views.dart/index_views.dart';
 

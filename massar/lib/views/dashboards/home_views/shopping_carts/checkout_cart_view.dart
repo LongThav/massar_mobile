@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/url_base.dart';
+import 'package:project/utils/constants/url_base.dart';
 import 'package:project/controllers/home_ctrl/home_ctrl.dart';
 import 'package:project/models/cart_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../constants/color.dart';
+import '../../../../utils/constants/color.dart';
 import '../../../../controllers/home_ctrl/electronic_ctrl.dart';
 
 class CheckOutCartElectronicView extends StatefulWidget {

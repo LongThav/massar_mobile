@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/logger.dart';
-import 'package:project/constants/snack_bar.dart';
+import 'package:project/utils/constants/logger.dart';
+import 'package:project/utils/constants/snack_bar.dart';
 import 'package:project/controllers/profile_ctrl/profile_ctrl.dart';
 import 'package:project/views/dashboards/profile_views/profile_veiw.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants/url_base.dart';
+import '../../../utils/constants/url_base.dart';
 import '/models/auth_model/login_model.dart';
-import '../../../constants/color.dart';
+import '../../../utils/constants/color.dart';
 
 class UpdateProfileView extends StatefulWidget {
   final LoginModel loginModel;

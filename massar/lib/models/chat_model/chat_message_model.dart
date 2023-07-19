@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../constants/firstore_constan.dart';
+import '../../utils/constants/firstore_constan.dart';
 
 class ChatMessages {
   String idFrom;

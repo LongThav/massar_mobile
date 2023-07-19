@@ -10,10 +10,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '/controllers/auth_ctrls/auth_firebase_ctrl.dart';
 import '/views/auths/login_view.dart';
-import '../../../../constants/color.dart';
-import '../../../../constants/firstore_constan.dart';
-import '../../../../constants/size_constan.dart';
-import '../../../../constants/text_field_constan.dart';
+import '../../../../utils/constants/color.dart';
+import '../../../../utils/constants/firstore_constan.dart';
+import '../../../../utils/constants/size_constan.dart';
+import '../../../../utils/constants/text_field_constan.dart';
 import '../../../../controllers/chat_ctrl/chat_ctrl.dart';
 import '../../../../models/chat_model/chat_message_model.dart';
 import '../../../../widgets/common_widget.dart';

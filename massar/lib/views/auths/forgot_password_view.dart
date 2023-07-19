@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/views/auths/verify_code_pin_view.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/snack_bar.dart';
+import '../../utils/constants/snack_bar.dart';
 import '../../controllers/auth_ctrls/auth_ctrl.dart';
 
 class ForgotPasswordView extends StatefulWidget {

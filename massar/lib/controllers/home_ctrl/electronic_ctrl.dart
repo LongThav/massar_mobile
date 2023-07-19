@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
-import '/constants/snack_bar.dart';
+import '../../utils/constants/snack_bar.dart';
 import '/db_helper_local/cache_local_storages/add_to_cart_db.dart';
 import '/models/cart_model.dart';
-import '/constants/logger.dart';
-import '/constants/url_base.dart';
+import '../../utils/constants/logger.dart';
+import '../../utils/constants/url_base.dart';
 import '../../db_helper_local/auth_db_helper/auth_db_local.dart';
-import '/constants/loading_status.dart';
+import '../../utils/constants/loading_status.dart';
 import '/models/electronic_model/electronic_model.dart';
 
 class ElectronicCtrl extends ChangeNotifier {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/logger.dart';
+import 'package:project/utils/constants/logger.dart';
 
-import '../db_helper_local/auth_db_helper/auth_db_local.dart';
-import '../views/auths/login_view.dart';
-import '../views/dashboards/mains_views.dart/index_views.dart';
+import '../../db_helper_local/auth_db_helper/auth_db_local.dart';
+import '../../views/auths/login_view.dart';
+import '../../views/dashboards/mains_views.dart/index_views.dart';
 
 class CheckStatusUser {
   void checkStatus(BuildContext context) async {

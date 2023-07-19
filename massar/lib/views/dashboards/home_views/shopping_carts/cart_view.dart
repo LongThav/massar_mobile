@@ -3,10 +3,10 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
 import 'checkout_cart_view.dart';
-import '/constants/snack_bar.dart';
-import '/constants/url_base.dart';
-import '/constants/color.dart';
-import '/constants/loading_status.dart';
+import '../../../../utils/constants/snack_bar.dart';
+import '../../../../utils/constants/url_base.dart';
+import '../../../../utils/constants/color.dart';
+import '../../../../utils/constants/loading_status.dart';
 import '/controllers/home_ctrl/electronic_ctrl.dart';
 import '/models/cart_model.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/constants/check_status_user.dart';
+import '../../../utils/constants/check_status_user.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

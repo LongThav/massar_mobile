@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/snack_bar.dart';
+import 'package:project/utils/constants/snack_bar.dart';
 import 'package:project/views/auths/login_view.dart';
 import 'package:provider/provider.dart';
 

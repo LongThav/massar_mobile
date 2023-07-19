@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants/color.dart';
-import '../constants/url_base.dart';
+import '../utils/constants/color.dart';
+import '../utils/constants/url_base.dart';
 
 class CommonCartListView extends StatefulWidget {
   final List cartModel;

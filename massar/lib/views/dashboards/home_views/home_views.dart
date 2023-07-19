@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
-import 'package:project/constants/loading_status.dart';
+import 'package:project/utils/constants/loading_status.dart';
 import 'package:project/controllers/home_ctrl/electronic_ctrl.dart';
 import 'package:project/models/electronic_model/electronic_model.dart';
 import 'package:project/widgets/common_gride_view.dart';
@@ -8,14 +8,16 @@ import 'package:provider/provider.dart';
 import 'package:location/location.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import 'package:project/constants/color.dart';
-import '/constants/snack_bar.dart';
+import 'package:project/utils/constants/color.dart';
+import '../../../utils/ulti_push.dart';
+import '../../../utils/constants/snack_bar.dart';
 import '/controllers/home_ctrl/home_ctrl.dart';
 import '/views/dashboards/home_views/beauty_view.dart';
 import '/views/dashboards/home_views/deal_view.dart';
 import '/views/dashboards/home_views/f_and_b_view.dart';
 import '/views/dashboards/home_views/fashion_view.dart';
-import '../../../constants/list_filter_home_view.dart';
+import '../../../utils/constants/list_filter_home_view.dart';
+import 'detial_pro_home_view.dart';
 import 'electronic_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -28,6 +30,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final TextEditingController _searchCtrl = TextEditingController();
   var value = "";
+
+  int _currentIndex = 0;
 
   CarouselController _switchBanner = CarouselController();
 
@@ -166,6 +170,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             _buildFilter(),
             _buildBanner(),
+            _buildIndicator(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
@@ -246,14 +251,26 @@ class _HomeViewState extends State<HomeView> {
           ),
           itemBuilder: (context, index) {
             var data = electronicModel.data[index];
-            return CommonGridView(
-                name: data.name,
-                sellerName: data.sellerName,
-                rate: data.rate ?? "0",
-                price: data.price,
-                discountPrice: data.discountPrice ?? "Free",
-                image: DecorationImage(
-                    image: NetworkImage(hostImgPro + data.image)));
+            return GestureDetector(
+              onTap: (){
+                pushPage(context,  DetialProHomeView(
+                  id: data.id,
+                  discount: data.discountPrice ?? "Free",
+                  name: data.name,
+                  sellerName: data.sellerName,
+                  price: data.price,
+                  image: data.image,
+                ));
+              },
+              child: CommonGridView(
+                  name: data.name,
+                  sellerName: data.sellerName,
+                  rate: data.rate ?? "0",
+                  price: data.price,
+                  discountPrice: data.discountPrice ?? "Free",
+                  image: DecorationImage(
+                      image: NetworkImage(hostImgPro + data.image))),
+            );
           },
         ),
       ),
@@ -324,49 +341,56 @@ class _HomeViewState extends State<HomeView> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       height: MediaQuery.of(context).size.height * 0.2,
-      child: ListView.builder(
-          itemCount: banner.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return CarouselSlider(
-              carouselController: _switchBanner,
-              items: [
-              Container(
-                margin: const EdgeInsets.only(right: 15),
-                width: MediaQuery.of(context).size.width * 0.7,
-                height: MediaQuery.of(context).size.height * 0.2,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(banner[index]['banner']),
-                        fit: BoxFit.fill)),
-              )
-            ], 
-            // options: CarouselOptions(
-            //   height: 380.0,
-            // enlargeCenterPage: true,
-            // autoPlay: true,
-            // aspectRatio: 16 / 9,
-            // autoPlayCurve: Curves.fastOutSlowIn,
-            // enableInfiniteScroll: true,
-            // autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            // viewportFraction: 0.8,
-            // )
-            options: CarouselOptions(
-              pageSnapping: true,
-              autoPlay: true,
-              viewportFraction: 0.8,
-              enlargeCenterPage: true,
-              aspectRatio: 4.5 / 2,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: true,
-              onPageChanged: (int index, CarouselPageChangedReason changedReason){
-                setState(() {
-                  
-                });
-              }
+      child: CarouselSlider(
+        carouselController: _switchBanner,
+        items: List.generate(banner.length, (index) {
+          return Container(
+            margin: const EdgeInsets.only(right: 15),
+            width: MediaQuery.of(context).size.width * 0.7,
+            height: MediaQuery.of(context).size.height * 0.2,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(banner[index]['banner']),
+                    fit: BoxFit.fill)),
+          );
+        }),
+        options: CarouselOptions(
+            pageSnapping: true,
+            autoPlay: true,
+            viewportFraction: 0.7,
+            enlargeCenterPage: true,
+            aspectRatio: 5 / 2,
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enableInfiniteScroll: true,
+            initialPage: 0,
+            onPageChanged: (int index, reason) {
+              setState(() {
+                _currentIndex = index;
+              });
+            }),
+      ),
+    );
+  }
+
+  Widget _buildIndicator() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(banner.length, (index) {
+          return Container(
+            margin: const EdgeInsets.symmetric(horizontal: 2),
+            width: 10.0,
+            height: 10.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: _currentIndex == index
+                  ? const Color.fromRGBO(0, 0, 0, 0.8)
+                  : const Color.fromRGBO(0, 0, 0, 0.3),
             ),
-            );
-          }),
+          );
+        }),
+      ),
     );
   }
 }

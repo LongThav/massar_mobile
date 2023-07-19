@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:project/constants/size_constan.dart';
+import 'package:project/utils/constants/size_constan.dart';
 
 import 'color.dart';
 

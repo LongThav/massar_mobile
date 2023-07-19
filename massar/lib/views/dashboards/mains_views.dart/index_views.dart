@@ -9,13 +9,13 @@ import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
 
 import '../home_views/shopping_carts/cart_view.dart';
-import '/constants/logger.dart';
-import '/constants/snack_bar.dart';
+import '../../../utils/constants/logger.dart';
+import '../../../utils/constants/snack_bar.dart';
 import '/controllers/auth_ctrls/auth_ctrl.dart';
 import '../../../controllers/profile_ctrl/profile_ctrl.dart';
 import '/views/auths/login_view.dart';
-import '../../../constants/list_default_view.dart';
-import '../../../constants/list_icon_setting.dart';
+import '../../../utils/constants/list_default_view.dart';
+import '../../../utils/constants/list_icon_setting.dart';
 
 class IndexView extends StatefulWidget {
   const IndexView({super.key});

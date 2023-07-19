@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '/constants/color.dart';
-import '/constants/logger.dart';
+import '../utils/constants/color.dart';
+import '../utils/constants/logger.dart';
 
 
 class ViewDetailItemByFilter extends StatefulWidget {

@@ -3,11 +3,11 @@ import 'package:project/controllers/home_ctrl/fashion_ctrl.dart';
 import 'package:project/views/dashboards/home_views/cart_list_view.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants/snack_bar.dart';
+import '../../../utils/constants/snack_bar.dart';
 import '/models/cart_model.dart';
 import '/widgets/common_view_index_item.dart';
-import '/constants/logger.dart';
-import '/constants/url_base.dart';
+import '../../../utils/constants/logger.dart';
+import '../../../utils/constants/url_base.dart';
 import '../../../controllers/home_ctrl/electronic_ctrl.dart';
 
 class ViewDetailItemElectronic extends StatefulWidget {

@@ -6,8 +6,8 @@ import 'package:location/location.dart';
 
 
 import 'package:http/http.dart' as http;
-import 'package:project/constants/logger.dart';
-import 'package:project/constants/url_base.dart';
+import 'package:project/utils/constants/logger.dart';
+import 'package:project/utils/constants/url_base.dart';
 import 'package:project/db_helper_local/auth_db_helper/auth_db_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

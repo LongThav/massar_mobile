@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project/models/f_and_b.dart/f_and_b_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants/color.dart';
-import '../../../constants/loading_status.dart';
-import '../../../constants/url_base.dart';
+import '../../../utils/constants/color.dart';
+import '../../../utils/constants/loading_status.dart';
+import '../../../utils/constants/url_base.dart';
 import '../../../controllers/home_ctrl/f_and_b_ctrl.dart';
 import '../../../widgets/common_gride_view.dart';
 

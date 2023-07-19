@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/color.dart';
-import 'package:project/constants/loading_status.dart';
-import 'package:project/constants/url_base.dart';
+import 'package:project/utils/constants/color.dart';
+import 'package:project/utils/constants/loading_status.dart';
+import 'package:project/utils/constants/url_base.dart';
 import 'package:project/controllers/feeds/feeds_ctrl.dart';
 import 'package:project/models/feed_model/post_model.dart';
 import 'package:provider/provider.dart';

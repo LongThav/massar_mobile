@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import '../../constants/firstore_constan.dart';
+import '../../utils/constants/firstore_constan.dart';
 
 
 

@@ -4,7 +4,7 @@ import 'package:project/controllers/auth_ctrls/auth_firebase_ctrl.dart';
 import 'package:project/views/auths/login_view.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/snack_bar.dart';
+import '../../utils/constants/snack_bar.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});

@@ -6,9 +6,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:project/constants/loading_status.dart';
-import 'package:project/constants/logger.dart';
-import 'package:project/constants/url_base.dart';
+import 'package:project/utils/constants/loading_status.dart';
+import 'package:project/utils/constants/logger.dart';
+import 'package:project/utils/constants/url_base.dart';
 import 'package:project/models/feed_model/comment_model.dart';
 import 'package:project/models/feed_model/post_model.dart';
 

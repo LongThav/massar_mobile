@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/loading_status.dart';
-import 'package:project/constants/url_base.dart';
+import 'package:project/utils/constants/loading_status.dart';
+import 'package:project/utils/constants/url_base.dart';
 import 'package:project/models/fashion_model/fashion_model.dart';
 import 'package:project/widgets/common_gride_view.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants/color.dart';
+import '../../../utils/constants/color.dart';
 import '../../../controllers/home_ctrl/fashion_ctrl.dart';
 import 'view_detail_item_view.dart';
 

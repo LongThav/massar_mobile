@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:project/constants/loading_status.dart';
-import 'package:project/constants/snack_bar.dart';
-import 'package:project/constants/url_base.dart';
+import 'package:project/utils/constants/loading_status.dart';
+import 'package:project/utils/constants/snack_bar.dart';
+import 'package:project/utils/constants/url_base.dart';
 import 'package:project/controllers/profile_ctrl/profile_ctrl.dart';
 import 'package:project/models/auth_model/login_model.dart';
 import 'package:project/views/dashboards/profile_views/update_profile_view.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants/list_icon_setting.dart';
+import '../../../utils/constants/list_icon_setting.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});

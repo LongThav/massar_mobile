@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants/color.dart';
-import '../constants/size_constan.dart';
+import '../utils/constants/color.dart';
+import '../utils/constants/size_constan.dart';
 
 Widget errorContainer() {
   return Container(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:project/constants/logger.dart';
+import 'package:project/utils/constants/logger.dart';
 
-import '../constants/color.dart';
+import '../utils/constants/color.dart';
 
 class CommonGridView extends StatelessWidget {
   final String name;

@@ -4,7 +4,7 @@ import 'package:project/views/auths/register_view.dart';
 import 'package:provider/provider.dart';
 
 import '../dashboards/mains_views.dart/index_views.dart';
-import '/constants/snack_bar.dart';
+import '../../utils/constants/snack_bar.dart';
 import '../../controllers/auth_ctrls/auth_ctrl.dart';
 import 'forgot_password_view.dart';
 

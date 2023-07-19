@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:project/constants/loading_status.dart';
-import 'package:project/constants/url_base.dart';
+import 'package:project/utils/constants/loading_status.dart';
+import 'package:project/utils/constants/url_base.dart';
 import 'package:project/controllers/feeds/feeds_ctrl.dart';
 import 'package:project/controllers/profile_ctrl/profile_ctrl.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants/color.dart';
+import '../../../utils/constants/color.dart';
 import '../../../models/auth_model/login_model.dart';
 
 class SellerView extends StatefulWidget {
