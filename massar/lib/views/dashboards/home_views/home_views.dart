@@ -6,6 +6,7 @@ import 'package:project/models/electronic_model/electronic_model.dart';
 import 'package:project/widgets/common_gride_view.dart';
 import 'package:provider/provider.dart';
 import 'package:location/location.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:project/constants/color.dart';
 import '/constants/snack_bar.dart';
@@ -27,6 +28,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final TextEditingController _searchCtrl = TextEditingController();
   var value = "";
+
+  CarouselController _switchBanner = CarouselController();
 
   late LocationData _currentPosition;
   String _address = '';
@@ -217,14 +220,16 @@ class _HomeViewState extends State<HomeView> {
     final height = MediaQuery.of(context).size.height;
     final double itemHeight = (height - kToolbarHeight - width * 0.6) / 2;
     final double itemWidth = width / 2;
-    if(electronicModel.data.isEmpty){
-      return const Center(child: Text("No Product"),);
+    if (electronicModel.data.isEmpty) {
+      return const Center(
+        child: Text("No Product"),
+      );
     }
     electronicModel;
     return RefreshIndicator(
-      onRefresh: ()async{
-              context.read<ElectronicCtrl>().setLoading();
-      context.read<ElectronicCtrl>().readElectronic();
+      onRefresh: () async {
+        context.read<ElectronicCtrl>().setLoading();
+        context.read<ElectronicCtrl>().readElectronic();
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -247,8 +252,8 @@ class _HomeViewState extends State<HomeView> {
                 rate: data.rate ?? "0",
                 price: data.price,
                 discountPrice: data.discountPrice ?? "Free",
-                image:
-                    DecorationImage(image: NetworkImage(hostImgPro + data.image)));
+                image: DecorationImage(
+                    image: NetworkImage(hostImgPro + data.image)));
           },
         ),
       ),
@@ -323,14 +328,43 @@ class _HomeViewState extends State<HomeView> {
           itemCount: banner.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return Container(
-              margin: const EdgeInsets.only(right: 15),
-              width: MediaQuery.of(context).size.width * 0.7,
-              height: MediaQuery.of(context).size.height * 0.2,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(banner[index]['banner']),
-                      fit: BoxFit.fill)),
+            return CarouselSlider(
+              carouselController: _switchBanner,
+              items: [
+              Container(
+                margin: const EdgeInsets.only(right: 15),
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: MediaQuery.of(context).size.height * 0.2,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(banner[index]['banner']),
+                        fit: BoxFit.fill)),
+              )
+            ], 
+            // options: CarouselOptions(
+            //   height: 380.0,
+            // enlargeCenterPage: true,
+            // autoPlay: true,
+            // aspectRatio: 16 / 9,
+            // autoPlayCurve: Curves.fastOutSlowIn,
+            // enableInfiniteScroll: true,
+            // autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            // viewportFraction: 0.8,
+            // )
+            options: CarouselOptions(
+              pageSnapping: true,
+              autoPlay: true,
+              viewportFraction: 0.8,
+              enlargeCenterPage: true,
+              aspectRatio: 4.5 / 2,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              onPageChanged: (int index, CarouselPageChangedReason changedReason){
+                setState(() {
+                  
+                });
+              }
+            ),
             );
           }),
     );
