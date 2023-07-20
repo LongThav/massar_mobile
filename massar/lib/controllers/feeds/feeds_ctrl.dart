@@ -11,6 +11,7 @@ import 'package:project/utils/constants/logger.dart';
 import 'package:project/utils/constants/url_base.dart';
 import 'package:project/models/feed_model/comment_model.dart';
 import 'package:project/models/feed_model/post_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../db_helper_local/auth_db_helper/auth_db_local.dart';
 
@@ -23,6 +24,8 @@ class FeedController extends ChangeNotifier {
 
   LoadingStatus _loadingStatus = LoadingStatus.none;
   LoadingStatus get loadingStatus => _loadingStatus;
+
+  late SharedPreferences _sharedPreferences ;
 
   void setLoading() {
     _loadingStatus = LoadingStatus.loading;
