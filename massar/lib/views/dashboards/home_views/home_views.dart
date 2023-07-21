@@ -266,7 +266,7 @@ class _HomeViewState extends State<HomeView> {
                   name: data.name,
                   sellerName: data.sellerName,
                   rate: data.rate ?? "0",
-                  price: data.price,
+                  price: "${data.price } \$",
                   discountPrice: data.discountPrice ?? "Free",
                   image: DecorationImage(
                       image: NetworkImage(hostImgPro + data.image))),

@@ -22,6 +22,7 @@ class _CartViewState extends State<CartView> {
   bool _selectAll = false;
   bool selectIndex = false;
   double totalPayment = 0;
+  double total = 0 ;
 
   double totalPrice = 0;
 
@@ -165,240 +166,181 @@ class _CartViewState extends State<CartView> {
           var data = cartModel[index];
           var price = double.parse(data.cartPrice);
           // debugPrint("Price: ${price * data.total}");
-          double total = cartModel
+           total = cartModel
               .map<double>((item) => price * item.total)
               .reduce((value1, value2) => value1 + value2);
           totalPrice = total;
-          // debugPrint("total price: $totalPrice");
-          return GestureDetector(
-            onLongPress: () {
-              setState(() {
-                selectIndex = data.isSelect = !data.isSelect;
-                if (selectIndex == true) {
-                  totalItem.add(index);
-                  debugPrint("add: $totalItem");
-                  context.read<ElectronicCtrl>().addTotalPrize(total);
-                  product.add(_cartModelPro(
-                      data.id,
-                      data.cartName,
-                      data.cartSellerName,
-                      data.cartPrice,
-                      data.cartRate,
-                      data.cartImage,
-                      data.cartDiscount));
-                } else {
-                  totalItem.removeLast();
-                  product.removeLast();
-                  double cartpirc = double.parse(data.cartPrice);
-                  double cart = total - cartpirc;
-                  context.read<ElectronicCtrl>().addTotalPrize(cart);
-                  debugPrint("After remove: $totalItem");
-                }
-              });
-            },
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              width: width,
-              height: height * 0.15,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Stack(
+          debugPrint("total price: $totalPrice");
+          return Container(
+            margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            width: width,
+            height: height * 0.15,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      margin: const EdgeInsets.only(
+                        left: 20,
+                      ),
+                      decoration: const BoxDecoration(
+                          color: mainColor, shape: BoxShape.circle),
+                      child: const Center(
+                        child: Icon(
+                          LineIcons.check,
+                          size: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: width * 0.01,
+                ),
+                Container(
+                  width: width * 0.2,
+                  height: height * 0.1,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: NetworkImage(hostImg + data.cartImage),
+                          fit: BoxFit.fill)),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: height * 0.015),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      data.isSelect == false
-                          ? Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 15),
-                              padding: const EdgeInsets.all(4),
-                            )
-                          : Container(
-                              padding: const EdgeInsets.all(5),
-                              margin: const EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: const BoxDecoration(
-                                  color: mainColor, shape: BoxShape.circle),
-                              child: const Center(
-                                child: Icon(
-                                  LineIcons.check,
-                                  size: 13,
-                                  color: Colors.white,
-                                ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 8.0, top: 8.0, bottom: 8.0),
+                        child: Text(
+                          data.cartName,
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey[700],
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          '\$${price * data.total}',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: mainColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        margin: EdgeInsets.only(right: width * 0.15),
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  if (data.total > 1) {
+                                    data.total--;
+                                    // data.total -= data.total + 1;
+                                  } else {
+                                    snackBar(
+                                        context, "Product can't be not empty");
+                                  }
+                                });
+                              },
+                              child: Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 1, color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(4)),
+                                child: const Center(
+                                    child: Text(
+                                  "-",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )),
                               ),
                             ),
-                      _selectAll == false
-                          ? Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 15),
-                              padding: const EdgeInsets.all(4),
-                            )
-                          : Container(
-                              padding: const EdgeInsets.all(5),
-                              margin: const EdgeInsets.only(
-                                left: 20,
-                              ),
-                              decoration: const BoxDecoration(
-                                  color: mainColor, shape: BoxShape.circle),
-                              child: const Center(
-                                child: Icon(
-                                  LineIcons.check,
-                                  size: 13,
-                                  color: Colors.white,
-                                ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 5),
+                              child: Text(
+                                data.total.toString(),
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  debugPrint("befor up: ${data.total}");
+                                  data.total = data.total + 1;
+                                  debugPrint("Up total: ${data.total}");
+                                });
+                                context
+                                    .read<ElectronicCtrl>()
+                                    .addTotalPrize(total);
+                              },
+                              child: Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                    color: mainColor,
+                                    border: Border.all(
+                                        width: 1, color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(4)),
+                                child: const Center(
+                                    child: Text(
+                                  "+",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(
-                    width: width * 0.01,
-                  ),
-                  Container(
-                    width: width * 0.2,
-                    height: height * 0.1,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                            image: NetworkImage(hostImg + data.cartImage),
-                            fit: BoxFit.fill)),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: height * 0.015),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0, top: 8.0, bottom: 8.0),
-                          child: Text(
-                            data.cartName,
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.grey[700],
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Text(
-                            '\$${price * data.total}',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(left: 10),
-                          margin: EdgeInsets.only(right: width * 0.15),
-                          child: Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    if (data.isSelect == true) {
-                                      if (data.total > 1) {
-                                        data.total--;
-                                        // data.total -= data.total + 1;
-                                      } else {
-                                        snackBar(context,
-                                            "Product can't be not empty");
-                                      }
-                                    }
-                                  });
-                                },
-                                child: Container(
-                                  width: 20,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1, color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(4)),
-                                  child: const Center(
-                                      child: Text(
-                                    "-",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 5),
-                                child: Text(
-                                  data.total.toString(),
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  if (data.isSelect == true) {
-                                    setState(() {
-                                      debugPrint("befor up: ${data.total}");
-                                      data.total = data.total + 1;
-                                      debugPrint("Up total: ${data.total}");
-                                    });
-                                    context
-                                        .read<ElectronicCtrl>()
-                                        .addTotalPrize(total);
-                                  }
-                                },
-                                child: Container(
-                                  width: 20,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                      color: mainColor,
-                                      border: Border.all(
-                                          width: 1, color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(4)),
-                                  child: const Center(
-                                      child: Text(
-                                    "+",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.bottomRight,
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: IconButton(
-                        onPressed: () {
-                          context.read<ElectronicCtrl>().deleteProCart(data.id);
-                          cartModel.removeAt(index);
-                        },
-                        icon: Icon(
-                          Icons.delete_outline,
-                          color: Colors.grey[400],
-                        )),
-                  )
-                ],
-              ),
+                ),
+                Container(
+                  alignment: Alignment.bottomRight,
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: IconButton(
+                      onPressed: () {
+                        context.read<ElectronicCtrl>().deleteProCart(data.id);
+                        cartModel.removeAt(index);
+                      },
+                      icon: Icon(
+                        Icons.delete_outline,
+                        color: Colors.grey[400],
+                      )),
+                )
+              ],
             ),
           );
-        });
+        }
+    );
   }
 
   Widget _buildBottom() {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    double payment = context.read<ElectronicCtrl>().totalPrice;
     return Container(
       width: width,
       height: height * 0.11,
@@ -418,8 +360,8 @@ class _CartViewState extends State<CartView> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "\$$payment",
+                 Text(
+                  "\$$total",
                   style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,

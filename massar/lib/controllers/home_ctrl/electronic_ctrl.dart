@@ -258,10 +258,19 @@ class ElectronicCtrl extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getPayment(){
-    _totalPrice;
+  void getPayment(double price, int total){
+    cart.map<double>((item)=> price * total)
+    .reduce((value, element) => value + element);
     notifyListeners();
   }
+
+  // double price = 0;
+  // void addPrice(value){
+  //   price = value;
+  //   notifyListeners();
+  // }
+  
+
   
 }
 
