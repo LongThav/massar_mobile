@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:project/utils/constants/url_base.dart';
 import 'package:project/controllers/home_ctrl/home_ctrl.dart';
 import 'package:project/models/cart_model.dart';
+import 'package:project/utils/ulti_push.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utils/constants/color.dart';
 import '../../../../controllers/home_ctrl/electronic_ctrl.dart';
+import 'total_payment_view.dart';
 
 class CheckOutCartElectronicView extends StatefulWidget {
   final List<CartModel> cartModel;
-  const CheckOutCartElectronicView({super.key, required this.cartModel});
+  final double price;
+  const CheckOutCartElectronicView({super.key, required this.cartModel, required this.price});
 
   @override
   State<CheckOutCartElectronicView> createState() =>
@@ -263,7 +266,7 @@ class _CheckOutCartElectronicViewState
   Widget _buildTotalPayment() {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    double payment = context.read<ElectronicCtrl>().totalPrice;
+    // double payment = context.read<ElectronicCtrl>().totalPrice;
     return Container(
       width: width,
       height: height * 0.11,
@@ -285,14 +288,16 @@ class _CheckOutCartElectronicViewState
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "\$$payment",
+                  "${widget.price}\$",
                   style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: mainColor),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    pushPage(context,  TotalPaymentView(price: widget.price,));
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15, vertical: 13),

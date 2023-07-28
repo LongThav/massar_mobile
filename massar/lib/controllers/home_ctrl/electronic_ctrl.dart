@@ -249,29 +249,35 @@ class ElectronicCtrl extends ChangeNotifier {
   }
 
   List<CartModel> cart = [];
-  double _totalPrice = 0;
-  double get totalPrice => _totalPrice;
 
-  void addTotalPrize(double value){
-    _totalPrice = value;
-    debugPrint("total payment: $_totalPrice");
+  void addQtx(String id){
+    final index = cart.indexWhere((element) => element.id == id);
+    debugPrint("Index: $index");
+    
+    // int qtx = cart[index].total = cart[index].total + 1;
+    // debugPrint("Qtx: $qtx");
     notifyListeners();
   }
 
-  void getPayment(double price, int total){
-    cart.map<double>((item)=> price * total)
-    .reduce((value, element) => value + element);
+  void deleteQtx(String id){
+    final index = cart.indexWhere((element) => element.id == id);
+    final currentQtx = cart[index].total;
+    if(currentQtx <= 1){
+      currentQtx == 1;
+    }else{
+      cart[index].total = currentQtx - 1;
+    }
     notifyListeners();
   }
 
-  // double price = 0;
-  // void addPrice(value){
-  //   price = value;
-  //   notifyListeners();
-  // }
-  
+  double _price = 0;
+  double get price => _price;
 
-  
+  void addPrice(double value){
+    _price = value;
+    debugPrint("Price: $value");
+    notifyListeners();
+  }
 }
 
 ElectronicModel pareJsonElectronic(String str) =>

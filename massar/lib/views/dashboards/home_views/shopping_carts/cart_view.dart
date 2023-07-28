@@ -22,7 +22,7 @@ class _CartViewState extends State<CartView> {
   bool _selectAll = false;
   bool selectIndex = false;
   double totalPayment = 0;
-  double total = 0 ;
+  double total = 0;
 
   double totalPrice = 0;
 
@@ -166,7 +166,7 @@ class _CartViewState extends State<CartView> {
           var data = cartModel[index];
           var price = double.parse(data.cartPrice);
           // debugPrint("Price: ${price * data.total}");
-           total = cartModel
+          total = cartModel
               .map<double>((item) => price * item.total)
               .reduce((value1, value2) => value1 + value2);
           totalPrice = total;
@@ -291,9 +291,12 @@ class _CartViewState extends State<CartView> {
                                   data.total = data.total + 1;
                                   debugPrint("Up total: ${data.total}");
                                 });
+                                // print("Index In View: ${data.id}");
+                                debugPrint("Total Payment: $total");
                                 context
                                     .read<ElectronicCtrl>()
-                                    .addTotalPrize(total);
+                                    .addPrice(total);
+                                
                               },
                               child: Container(
                                 width: 20,
@@ -334,13 +337,13 @@ class _CartViewState extends State<CartView> {
               ],
             ),
           );
-        }
-    );
+        });
   }
 
   Widget _buildBottom() {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+     List<CartModel> cartModel = context.watch<ElectronicCtrl>().cartModel;
     return Container(
       width: width,
       height: height * 0.11,
@@ -360,7 +363,7 @@ class _CartViewState extends State<CartView> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 Text(
+                Text(
                   "\$$total",
                   style: const TextStyle(
                       fontSize: 25,
@@ -369,15 +372,19 @@ class _CartViewState extends State<CartView> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    if (selectIndex == true || _selectAll == true) {
-                      debugPrint("Buy item");
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return CheckOutCartElectronicView(cartModel: product);
-                      }));
-                    } else {
-                      snackBar(context, "Please select item");
-                    }
+                    // if (selectIndex == true || _selectAll == true) {
+                    //   debugPrint("Buy item");
+                    //   Navigator.push(context,
+                    //       MaterialPageRoute(builder: (context) {
+                    //     return CheckOutCartElectronicView(cartModel: product);
+                    //   }));
+                    // } else {
+                    //   snackBar(context, "Please select item");
+                    // }
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return CheckOutCartElectronicView(cartModel: product, price: total,);
+                    }));
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -388,7 +395,7 @@ class _CartViewState extends State<CartView> {
                     ),
                     child: Center(
                       child: Text(
-                        "Buy (${totalItem.length} Item)",
+                        "Buy (${cartModel.length} Item)",
                         style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
